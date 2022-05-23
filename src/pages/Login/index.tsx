@@ -64,7 +64,7 @@ export const Login = () => {
           fontFamily={theme.fonts.body}
           _hover={{ bg: theme.colors.blue["800"] }}
           fontWeight="normal"
-          fontSize="20px"
+          fontSize={["14px", "16px","20px"]}
           letterSpacing="0.8px"
           color={theme.colors.white}
           bg={theme.colors.violet["700"]}

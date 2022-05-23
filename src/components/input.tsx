@@ -36,7 +36,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
 
       <InputGroup flexDirection="column">
         {name === "password" && 
-          <InputRightElement as="button" onClick={() => setHidePass((prev: boolean) => !hidePass)}>
+          <InputRightElement as="button" mt={["0", "3px", "10px"]} onClick={() => setHidePass((prev: boolean) => !hidePass)}>
             {hidePass ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
           </InputRightElement>
         }
@@ -47,7 +47,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           color="gray.700"
           w={["250px", "300px", "400px"]}
           onChangeCapture={(e) => setValue(e.currentTarget.value)}
-          _placeholder={{ color: "gray.500", fontSize: "16px"}}
+          _placeholder={{ color: "gray.500", fontSize: ["12px","16px","20px"]}}
           size="lg"
           h={["38px", "45", "60px"]}
           ref={ref}

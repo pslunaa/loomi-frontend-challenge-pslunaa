@@ -1,12 +1,11 @@
-import { Button, Flex, Heading, Image, VStack } from "@chakra-ui/react";
+import { Flex, Heading, Image} from "@chakra-ui/react";
 import { theme } from "../../styles/theme";
 import curvesBg from "../../assets/CurvePatterns.svg";
 import Logo from "../../assets/LogoLogin.svg";
-import { Input } from "../../components/input";
-import { useState } from "react";
+import { FormLogin } from "./FormLogin";
+
 
 export const Login = () => {
-  const [hidePass, setHidePass] = useState(true);
   return (
     <Flex
       h="100vh"
@@ -38,39 +37,7 @@ export const Login = () => {
         >
           Entrar na plataforma
         </Heading>
-        <VStack mt={["25px", "40px", "65px"]} spacing={["6", "8", "10"]}>
-          <Input
-            label="E-mail"
-            name="email"
-            type="email"
-            placeholder="Digite seu email"
-            hidePass={hidePass}
-            setHidePass={setHidePass}
-          />
-          <Input
-            label="Senha"
-            name="password"
-            hidePass={hidePass}
-            placeholder="Digite sua senha"
-            setHidePass={setHidePass}
-            type={hidePass ? "password" : "text"}
-          />
-        </VStack>
-        <Button
-          w="120px"
-          h="40px"
-          mt={["18px", "22px", "48px"]}
-          borderRadius="8px"
-          fontFamily={theme.fonts.body}
-          _hover={{ bg: theme.colors.blue["800"] }}
-          fontWeight="normal"
-          fontSize={["14px", "16px","20px"]}
-          letterSpacing="0.8px"
-          color={theme.colors.white}
-          bg={theme.colors.violet["700"]}
-        >
-          Entrar
-        </Button>
+       <FormLogin/>
       </Flex>
     </Flex>
   );

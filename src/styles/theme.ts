@@ -51,6 +51,11 @@ export const theme = extendTheme({
     "8xl": "6rem",
     "9xl": "8rem",
   },
+  breakpoints: {
+    sm: "768px",
+    md: "1280px",
+    lg: "1920px",
+  },
   styles: {
     global: {
       body: {

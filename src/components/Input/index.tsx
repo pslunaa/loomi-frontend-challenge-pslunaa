@@ -10,7 +10,7 @@ import {
 
 import React, { useState, ForwardRefRenderFunction, forwardRef, SetStateAction} from "react";
 import { FieldError } from "react-hook-form";
-import { theme } from "../styles/theme";
+import { theme } from "../../styles/theme";
 import {AiOutlineEyeInvisible, AiOutlineEye} from "react-icons/ai"
 
 interface InputProps extends ChakraInputProps {

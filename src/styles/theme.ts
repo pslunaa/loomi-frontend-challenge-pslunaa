@@ -52,7 +52,7 @@ export const theme = extendTheme({
     "9xl": "8rem",
   },
   breakpoints: {
-    sm: "768px",
+    sm: "1000px",
     md: "1280px",
     lg: "1920px",
   },

@@ -3,11 +3,17 @@ import IconMini from "../../assets/Grupo10510.svg";
 import { Logout } from "./Logout";
 import { theme } from "../../styles/theme";
 
-export const Header = () => {
+interface IUser {
+  name?: string;
+  avatar?: string;
+}
+
+export const Header = ({name, avatar}: IUser) => {
   const {isOpen, onClose, onToggle} = useDisclosure()
   return (
     <Flex
       h={["56px", "60px", "84px"]}
+      paddingY={["5px", "8px", "12px"]}
       w="100%"
       alignItems="center"
       justifyContent="space-between"

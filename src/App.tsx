@@ -1,13 +1,3 @@
-import { Dashboard } from "./pages/Dashboard";
-import { Login } from "./pages/Login";
+import { Routes } from "./routes";
 
-function App() {
-  return (
-    <>
-      {/* <Login /> */}
-      <Dashboard/>
-    </>
-  );
-}
-
-export default App;
+export const App = () => <Routes/>

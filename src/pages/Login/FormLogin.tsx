@@ -47,7 +47,7 @@ export const FormLogin = ({
           placeholder="Digite sua senha"
           setHidePass={setHidePass}
           type={hidePass ? "password" : "text"}
-          {...register("password")}
+          {...register("senha")}
         />
       </VStack>
       <Button

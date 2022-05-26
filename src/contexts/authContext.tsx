@@ -19,8 +19,14 @@ interface signInCredential {
 
 interface AuthContextData {
   accessToken: string;
+  userInfo: IUser;
   signIn: (credentials: signInCredential) => Promise<void>;
   signOut: () => void;
+}
+
+interface IUser {
+  name?: string;
+  avatar?: string;
 }
 
 const authContext = createContext<AuthContextData>({} as AuthContextData);
@@ -32,6 +38,14 @@ const useAuth = () => {
 };
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
+  const [userInfo, setUserInfo] = useState<IUser>(() => {
+    const user = localStorage.getItem("@loomiProject:user");
+
+    if (user) {
+      return JSON.parse(user);
+    }
+    return {} as IUser;
+  });
   const [token, setToken] = useState<string>(() => {
     const accessToken = Cookies.get("@loomiProject:accessToken");
 
@@ -42,20 +56,33 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     return "";
   });
 
+  const userInfoCall = () => {
+    api
+      .get("/me")
+      .then((response) =>
+        localStorage.setItem(
+          "@loomiProject:user",
+          JSON.stringify(response.data)
+        )
+      );
+  };
+
   const signIn = useCallback(async ({ email, password }: signInCredential) => {
     await api.post("/login", { email, password }).then((response) => {
       Cookies.set("@loomiProject:accessToken", response.data);
+      userInfoCall();
       setToken(response.data);
     });
   }, []);
 
   const signOut = useCallback(() => {
     Cookies.remove("@loomiProject:accessToken");
+    localStorage.removeItem("@loomiProject:user");
     setToken("");
   }, []);
 
   return (
-    <authContext.Provider value={{ accessToken: token, signIn, signOut }}>
+    <authContext.Provider value={{ accessToken: token, signIn, signOut, userInfo }}>
       {children}
     </authContext.Provider>
   );

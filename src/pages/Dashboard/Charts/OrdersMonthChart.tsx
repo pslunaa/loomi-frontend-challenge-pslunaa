@@ -3,6 +3,7 @@ import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import api from "../../../services";
 import { theme } from "../../../styles/theme";
+import { Box } from "@chakra-ui/react";
 
 interface OrdersMonth {
   value: number;
@@ -72,7 +73,7 @@ const OrdersMonthChart = () => {
               fontWeight: "bold",
               fontSize: "10px"
           }
-      }
+      },
     },
     yaxis:{
       labels:{
@@ -93,14 +94,18 @@ const OrdersMonthChart = () => {
     },
   };
   return (
-    <>
+    <Box
+    w={["320px", "400px", "608px"]}
+    bg={theme.colors.white}
+    borderRadius="12px"
+  >
       <ReactApexChart
         options={options}
         series={series}
         type="bar"
         width="100%"
       />
-    </>
+    </Box>
   );
 };
 

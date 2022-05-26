@@ -17,31 +17,31 @@ export const Sidebar = () => {
       bg={theme.colors.white}
       borderTopRadius="8px"
       alignItems="center"
-      justifyContent="center"
       flexDirection="column"
+      paddingBottom={["100px", "200", "290px"]}
       mt="20px"
       ml="16px"
       mr="30px"
-      w="60px"
+      w="45px"
       h="auto"
     >
       <Center
         borderBottom="1px solid"
-        h="65px"
-        w="63px"
+        h="55px"
+        w="45px"
         borderBottomColor="#E0E0E0"
       >
-        <HiMenuAlt2 size="25" />
+        <HiMenuAlt2 size="23" />
       </Center>
       <VStack spacing="5">
         <Center
           mt="20px"
-          h="35px"
-          w="35px"
+          h="25px"
+          w="25px"
           bg={theme.colors.violet["700"]}
           borderRadius="6px"
         >
-          <Image src={Home} />
+          <Image src={Home} w="15px"/>
         </Center>
         <Center
           h="40px"

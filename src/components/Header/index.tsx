@@ -2,20 +2,26 @@ import { Box, Flex, HStack, Image, Text, useDisclosure } from "@chakra-ui/react"
 import IconMini from "../../assets/Grupo10510.svg";
 import { Logout } from "./Logout";
 import { theme } from "../../styles/theme";
+import { useAuth } from "../../contexts/authContext";
 
 interface IUser {
   name?: string;
   avatar?: string;
 }
 
-export const Header = ({name, avatar}: IUser) => {
+export const Header = () => {
   const {isOpen, onClose, onToggle} = useDisclosure()
+
+  const {userInfo} = useAuth()
+
   return (
     <Flex
       h={["56px", "60px", "84px"]}
       paddingY={["5px", "8px", "12px"]}
       w="100%"
       alignItems="center"
+      position="sticky"
+      top="0"
       justifyContent="space-between"
       bg={theme.colors.white}
       boxShadow="0px 3px 6px #00000014"
@@ -28,13 +34,10 @@ export const Header = ({name, avatar}: IUser) => {
       />
       <HStack mr="40px">
         <Text fontSize={["12px", "14px", "16px"]} textAlign="center">
-          Nome do Usuário
+          {userInfo.name}
         </Text>
         <Box
           as="button"
-          borderRadius="20px"
-          bg={theme.colors.violet["700"]}
-          color={theme.colors.gray["100"]}
           w={["25px", "30px", "40px"]}
           h={["25px", "30px", "40px"]}
           fontSize={["14px", "16px", "22px"]}
@@ -43,7 +46,7 @@ export const Header = ({name, avatar}: IUser) => {
           justifyContent="center"
           onClick={onToggle}
         >
-          N
+          <Image borderRadius="20px" w="100%" h="100%" src={userInfo.avatar} />
         </Box>
       </HStack>
       <Logout isOpen={isOpen} onClose={onClose}/>

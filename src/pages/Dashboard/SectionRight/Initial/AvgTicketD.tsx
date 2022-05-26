@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import CardInfo from "../../../components/CardInfo";
-import api from "../../../services";
-import { theme } from "../../../styles/theme";
+import CardInfo from "../../../../components/CardInfo";
+import api from "../../../../services";
+import { theme } from "../../../../styles/theme";
 
 interface AverageTicket {
   value: number;

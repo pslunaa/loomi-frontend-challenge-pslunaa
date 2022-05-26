@@ -18,10 +18,11 @@ const CardInfo = ({
 }: CardInfoProps) => {
   return (
     <Flex
-      w={["170px", "200px", "232px"]}
+      w={["150px", "190px", "232px"]}
       h={["120px", "150px", "168px"]}
       borderRadius="15px"
       bg={theme.colors.white}
+      paddingY="5px"
     >
       <Flex
         justifyContent="flex-start"
@@ -64,7 +65,7 @@ const CardInfo = ({
         <Text
           fontSize={["xs", "xs", "sm"]}
           mb={["5px", "14px", "16.5px"]}
-          color={alert ? theme.colors.purple["500"] : theme.colors.green["600"]}
+          color={spread && (alert || spread < 0 ? theme.colors.purple["500"] : theme.colors.green["600"])}
         >
           {description}
         </Text>

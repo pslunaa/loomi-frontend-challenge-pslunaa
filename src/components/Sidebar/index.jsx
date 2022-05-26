@@ -1,4 +1,4 @@
-import { Center, Box, Flex, Image, VStack } from "@chakra-ui/react";
+import { Center, Flex, Image, VStack } from "@chakra-ui/react";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { theme } from "../../styles/theme";
 import Home from "../../assets/home.svg";

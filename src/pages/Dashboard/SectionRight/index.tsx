@@ -9,8 +9,10 @@ import OrdersMonth from "./Initial/OrdersMonth";
 import SellsMonth from "./Initial/SellsMonth";
 import ConvertionFunnel from "./convertionFunnel";
 import TranscationsPerAgeChart from "../Charts/TransactionsPerAge";
-import SessionsPerSexChart from "../Charts/SessionsPerSex";
+import SessionsPerSexChart from "../Charts/SessionsPerGender";
 import TranscationsPerClientTypeChart from "../Charts/TransactionsPerClientTypeChart";
+import ProfitExpectationChart from "../Charts/ProfitExpectationChart";
+import OrdersAnalyzeChart from "../Charts/OrdersAnalyzeChart";
 
 const SectionRight = () => {
   return (
@@ -33,7 +35,7 @@ const SectionRight = () => {
           <SellsMonth />
         </Flex>
       </Grid>
-      <Grid mt="15px">
+      <Grid mt={["15px", "25px","40px"]}>
         <Heading
           ml="20px"
           color={theme.colors.violet["700"]}
@@ -42,11 +44,13 @@ const SectionRight = () => {
         >
           Dashboard de vendas
         </Heading>
-        <Flex>
+        <Flex gap={["15px", "20px", "32px"]}>
           <OrdersMonthChart />
+          <ProfitExpectationChart />
+          <OrdersAnalyzeChart />
         </Flex>
       </Grid>
-      <Grid mt="15px">
+      <Grid mt={["15px", "25px","40px"]}>
         <Heading
           ml="20px"
           color={theme.colors.violet["700"]}
@@ -59,7 +63,7 @@ const SectionRight = () => {
           <ConvertionFunnel />
         </Flex>
       </Grid>
-      <Grid mt="15px">
+      <Grid mt={["15px", "25px","40px"]}>
         <Heading
           ml="20px"
           color={theme.colors.violet["700"]}

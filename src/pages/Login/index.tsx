@@ -10,7 +10,6 @@ import { useAuth } from "../../contexts/authContext";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
-
 const signInSchema = yup.object().shape({
   email: yup.string().required("Email obrigatório").email("Email inválido"),
   senha: yup.string().required("Senha obrigatória"),
@@ -25,8 +24,6 @@ export const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const history = useHistory();
-
- 
 
   const { signIn } = useAuth();
 

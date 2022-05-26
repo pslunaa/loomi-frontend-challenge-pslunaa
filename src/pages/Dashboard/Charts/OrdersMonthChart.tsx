@@ -27,12 +27,12 @@ const OrdersMonthChart = () => {
   ];
 
   const [ordersMonth, setOrdersMonth] = useState<number[]>([]);
-  const [month, setMonth] = useState<String[]>([]);
+  // const [month, setMonth] = useState<String[]>([]);
 
   useEffect(() => {
     api.get<OrdersMonth[]>("/sells-per-month").then((response) => {
       setOrdersMonth(response.data.map((monthValues) => monthValues.value));
-      setMonth(response.data.map((month) => months[month.month]));
+      // setMonth(response.data.map((month) => months[month.month]));
     });
   }, []);
 
@@ -65,7 +65,7 @@ const OrdersMonthChart = () => {
       },
     },
     xaxis: {
-      categories: month,
+      categories: months,
       labels:{
           style:{
               colors: [theme.colors.brown["400"]],

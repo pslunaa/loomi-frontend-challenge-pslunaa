@@ -4,10 +4,6 @@ import { Logout } from "./Logout";
 import { theme } from "../../styles/theme";
 import { useAuth } from "../../contexts/authContext";
 
-interface IUser {
-  name?: string;
-  avatar?: string;
-}
 
 export const Header = () => {
   const {isOpen, onClose, onToggle} = useDisclosure()

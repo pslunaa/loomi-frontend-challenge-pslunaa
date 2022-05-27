@@ -1,16 +1,12 @@
 import { Box } from "@chakra-ui/react";
 import { ApexOptions } from "apexcharts";
-import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import api from "../../../services";
+import { useData } from "../../../contexts/dataContext";
 import { theme } from "../../../styles/theme";
 
-interface IData {
-  month: string;
-  value: number;
-}
 
 const ProfitExpectationChart = () => {
+  const { dataInfo } = useData();
   const months = [
     "JAN",
     "FEV",
@@ -26,27 +22,10 @@ const ProfitExpectationChart = () => {
     "DEZ",
   ];
 
-  const [profitReal, setProfitReal] = useState<number[]>([]);
-  const [profitExpectation, setProfitExpectation] = useState<number[]>([]);
-
-  const getProfitReal = () => {
-    api.get<IData[]>("/profit-per-month").then((response) => {
-      setProfitReal(response.data.map((profitReal) => profitReal.value));
-    });
-  };
-
-  const getProfitExpectation = () => {
-    api.get<IData[]>("/profit-expectation-per-month").then((response) => {
-      setProfitExpectation(
-        response.data.map((profitExpec) => profitExpec.value)
-      );
-    });
-  };
-
-  useEffect(() => {
-    getProfitReal();
-    getProfitExpectation();
-  }, []);
+  const profitReal = dataInfo[6]?.map((profitReal: any) => profitReal.value);
+  const profitExpectation = dataInfo[7]?.map(
+    (profitExpec: any) => profitExpec.value
+  );
 
   const series: ApexAxisChartSeries | ApexNonAxisChartSeries = [
     {
@@ -103,7 +82,7 @@ const ProfitExpectationChart = () => {
       show: true,
       position: "top",
       horizontalAlign: "left",
-      offsetX: 1
+      offsetX: 1,
     },
   };
 

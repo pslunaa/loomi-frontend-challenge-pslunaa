@@ -1,16 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import { ApexOptions } from "apexcharts";
-import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import api from "../../../services";
+import { useData } from "../../../contexts/dataContext";
 import { theme } from "../../../styles/theme";
 
-interface IData {
-  month: string;
-  value: number;
-}
-
 const OrdersAnalyzeChart = () => {
+  const { dataInfo } = useData();
   const months = [
     "JAN",
     "FEV",
@@ -26,27 +21,12 @@ const OrdersAnalyzeChart = () => {
     "DEZ",
   ];
 
-  const [ordersRealized, setOrdersRealized] = useState<number[]>([]);
-  const [ordersCanceled, setOrdersCanceled] = useState<number[]>([]);
-
-  const getOrdersRealized = () => {
-    api.get<IData[]>("/orders-per-month").then((response) => {
-      setOrdersRealized(response.data.map((orderRealized) => orderRealized.value));
-    });
-  };
-
-  const getOrdersCanceled = () => {
-    api.get<IData[]>("/canceled-orders-per-month").then((response) => {
-        setOrdersCanceled(
-        response.data.map((orderCanceled) => orderCanceled.value)
-      );
-    });
-  };
-
-  useEffect(() => {
-    getOrdersRealized();
-    getOrdersCanceled();
-  }, []);
+  const ordersRealized = dataInfo[8]?.map(
+    (orderRealized: any) => orderRealized.value
+  );
+  const ordersCanceled = dataInfo[9]?.map(
+    (orderCanceled: any) => orderCanceled.value
+  );
 
   const series: ApexAxisChartSeries | ApexNonAxisChartSeries = [
     {
@@ -105,11 +85,11 @@ const OrdersAnalyzeChart = () => {
       horizontalAlign: "left",
       offsetX: 1,
     },
-    plotOptions:{
-        bar:{
-            rangeBarOverlap: true
-        }
-    }
+    plotOptions: {
+      bar: {
+        rangeBarOverlap: true,
+      },
+    },
   };
 
   return (

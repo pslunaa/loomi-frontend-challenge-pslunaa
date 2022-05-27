@@ -15,7 +15,9 @@ import ProfitExpectationChart from "../Charts/ProfitExpectationChart";
 import OrdersAnalyzeChart from "../Charts/OrdersAnalyzeChart";
 import ProductList from "./ProductList";
 
+
 const SectionRight = () => {
+
   return (
     <Grid>
       <Grid w="100%" mt={["25px", "35px", "45px"]}>

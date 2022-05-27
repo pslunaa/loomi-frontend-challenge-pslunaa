@@ -1,37 +1,22 @@
 import { Box, Heading } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import api from "../../../services";
 import { ResponsivePie } from "@nivo/pie";
 import { theme } from "../../../styles/theme";
-
-interface IData {
-  male: number;
-  female: number;
-}
-
-interface ISessionsPerSex {
-  [key: string]: IData;
-}
+import { useData } from "../../../contexts/dataContext";
 
 const SessionsPerGenderChart = () => {
-  const [valuesPerSex, setValuesPerSex] = useState<IData>({} as IData);
-
-  useEffect(() => {
-    api.get<ISessionsPerSex>("/users-resume").then((response) => {
-      setValuesPerSex(response.data["sessions-per-sex"]);
-    });
-  }, []);
+  const { dataInfo } = useData();
+  const valuesPerSex = dataInfo[10]?.["sessions-per-sex"];
 
   const data = [
     {
       id: "Masculino",
       label: "Masculino",
-      value: valuesPerSex.male,
+      value: valuesPerSex?.male,
     },
     {
       id: "Feminino",
       label: "Feminino",
-      value: valuesPerSex.female,
+      value: valuesPerSex?.female,
     },
   ];
 
@@ -57,7 +42,7 @@ const SessionsPerGenderChart = () => {
         margin={{ top: 40, right: 100, bottom: 80, left: 80 }}
         innerRadius={0.5}
         enableArcLabels={false}
-        colors={[theme.colors.brown["100"] ,theme.colors.blue["700"]]}
+        colors={[theme.colors.brown["100"], theme.colors.blue["700"]]}
         arcLinkLabelsTextColor={theme.colors.white}
         arcLinkLabelsColor={theme.colors.white}
         legends={[

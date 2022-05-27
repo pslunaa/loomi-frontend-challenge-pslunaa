@@ -1,27 +1,14 @@
-import { useEffect, useState } from "react";
 import CardInfo from "../../../../components/CardInfo";
-import api from "../../../../services";
-
-interface AverageTicket {
-  value: number;
-  growth: number;
-}
+import { useData } from "../../../../contexts/dataContext";
 
 const SellsMonth = () => {
-  const [sellsMonth, setSellsMonth] = useState({} as AverageTicket);
-
-  useEffect(() => {
-    api.get<AverageTicket>("/sells-month").then((response) => {
-      setSellsMonth(response.data);
-    });
-  }, []);
-
+  const { dataInfo } = useData();
   return (
     <CardInfo
       title="Produtos vendidos no mês"
       description="em relação a julho"
-      spread={sellsMonth.growth}
-      value={`${sellsMonth.value} produtos`}
+      spread={dataInfo[4]?.growth}
+      value={`${dataInfo[4]?.value} produtos`}
     />
   );
 };

@@ -1,26 +1,11 @@
-import { Center, Flex, Heading, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 import CardInfo from "../../../../components/CardInfo";
-import api from "../../../../services";
-import { theme } from "../../../../styles/theme";
-
-interface Alert {
-  value: number;
-  type: string;
-  since: string;
-}
+import { useData } from "../../../../contexts/dataContext";
 
 const AlertStock = () => {
-  const [alertStock, setAlertStock] = useState<Alert[]>([]);
+  const { dataInfo } = useData();
 
-  useEffect(() => {
-    api.get<Alert[]>("/alerts").then((response) => {
-      setAlertStock(response.data);
-    });
-  }, []);
-
-  const stockView = alertStock?.find(
-    (alert) => alert.type === "Acabando o estoque"
+  const stockView = dataInfo[2]?.find(
+    (alert: any) => alert.type === "Acabando o estoque"
   );
 
   const acceptDateFromPromise = (date: Date | string | undefined) => {

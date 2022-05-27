@@ -4,8 +4,16 @@ import curvesBg from "../../assets/CurvePatterns.svg";
 import { theme } from "../../styles/theme";
 import { Sidebar } from "../../components/Sidebar";
 import SectionRight from "./SectionRight";
+import { useEffect } from "react";
+import { useData } from "../../contexts/dataContext";
 
 export const Dashboard = () => {
+  const {getAllData} = useData()
+
+  useEffect(() => {
+    getAllData()
+  }, [getAllData])
+
   return (
     <Flex h="100vh" flexDirection="column">
       <Header />

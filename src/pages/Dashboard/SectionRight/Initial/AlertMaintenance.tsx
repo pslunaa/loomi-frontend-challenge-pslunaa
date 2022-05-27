@@ -1,25 +1,11 @@
-import { useEffect, useState } from "react";
 import CardInfo from "../../../../components/CardInfo";
-import api from "../../../../services";
-
-
-interface Alert {
-  value: number;
-  type: string;
-  since: string;
-}
+import { useData } from "../../../../contexts/dataContext";
 
 const AlertMaintenance = () => {
-  const [alert, setAlert] = useState<Alert[]>([]);
+  const { dataInfo } = useData();
 
-  useEffect(() => {
-    api.get<Alert[]>("/alerts").then((response) => {
-      setAlert(response.data);
-    });
-  }, []);
-
-  const alertView = alert?.find(
-    (alert) => alert.type === "Produtos em manutenção"
+  const alertView = dataInfo[2]?.find(
+    (alert: any) => alert.type === "Produtos em manutenção"
   );
 
   const acceptDateFromPromise = (date: Date | string | undefined) => {

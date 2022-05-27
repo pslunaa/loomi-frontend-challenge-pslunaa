@@ -1,26 +1,15 @@
-import { useEffect, useState } from "react";
 import CardInfo from "../../../../components/CardInfo";
-import api from "../../../../services";
-
-interface Info {
-  value: number;
-  growth: number;
-}
-
-interface ConversionInfo {
-  [key: string]: Info;
-}
+import { useData } from "../../../../contexts/dataContext";
 
 const ConvertionFunnel = () => {
-  const [conversionResume, setConversionResume] = useState<ConversionInfo>(
-    {} as ConversionInfo
-  );
+  const {dataInfo} = useData()
 
-  useEffect(() => {
-    api.get("/conversions-resume").then((response) => {
-      setConversionResume(response.data);
-    });
-  }, []);
+  let conversionResume: any = []
+
+  if(!!dataInfo[11]){
+    conversionResume = dataInfo[11]
+  }
+  
 
   return (
     <>

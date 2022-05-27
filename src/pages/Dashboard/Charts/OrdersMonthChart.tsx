@@ -1,16 +1,11 @@
-import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import api from "../../../services";
 import { theme } from "../../../styles/theme";
 import { Box } from "@chakra-ui/react";
-
-interface OrdersMonth {
-  value: number;
-  month: number;
-}
+import { useData } from "../../../contexts/dataContext";
 
 const OrdersMonthChart = () => {
+  const {dataInfo} = useData()
   const months = [
     "JAN",
     "FEV",
@@ -26,20 +21,12 @@ const OrdersMonthChart = () => {
     "DEZ",
   ];
 
-  const [ordersMonth, setOrdersMonth] = useState<number[]>([]);
-  // const [month, setMonth] = useState<String[]>([]);
-
-  useEffect(() => {
-    api.get<OrdersMonth[]>("/sells-per-month").then((response) => {
-      setOrdersMonth(response.data.map((monthValues) => monthValues.value));
-      // setMonth(response.data.map((month) => months[month.month]));
-    });
-  }, []);
-
+  const dataChart = dataInfo[5]?.map((monthValues:any) => monthValues.value)
+ 
   const series: ApexAxisChartSeries | ApexNonAxisChartSeries = [
     {
       name: "Pedidos",
-      data: ordersMonth,
+      data: dataChart,
     },
   ];
 

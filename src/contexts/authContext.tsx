@@ -7,6 +7,7 @@ import {
 } from "react";
 import api from "../services/index";
 import Cookies from "js-cookie";
+import { useData } from "./dataContext";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -47,6 +48,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     return {} as IUser;
   });
 
+  const {getAllData} = useData()
+
   const [token, setToken] = useState<string>(() => {
     const accessToken = Cookies.get("@loomiProject:accessToken");
 
@@ -73,6 +76,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     await api.post("/login", { email, password }).then((response) => {
       Cookies.set("@loomiProject:accessToken", response.data, {expires: 1});
       userInfoCall()
+      getAllData()
       setToken(response.data);
     });
   }, []);

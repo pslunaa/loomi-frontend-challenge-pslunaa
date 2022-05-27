@@ -1,39 +1,19 @@
 import { Box } from "@chakra-ui/react";
 import { ApexOptions } from "apexcharts";
-import { useEffect, useState } from "react";
 import ReactApexCharts from "react-apexcharts";
-import api from "../../../services";
+import { useData } from "../../../contexts/dataContext";
 import { theme } from "../../../styles/theme";
 
-interface IData {
-  category: string;
-  value: number;
-}
-
-interface TransactionsPerAge {
-  [key: string]: IData[];
-}
-
-
 const TranscationsPerAgeChart = () => {
-  const [transationsCategories, setTransactionsCategories] = useState<string[]>(
-    []
+  const { dataInfo } = useData();
+
+  const transactionsCategories = dataInfo[10]?.["transactions-per-age"].map(
+    (transaction: any) => transaction.category
   );
 
-  const [valuesPerAge, setValuesPerAge] = useState<number[]>([]);
-
-  useEffect(() => {
-    api.get<TransactionsPerAge>("/users-resume").then((response) => {
-      setTransactionsCategories(
-        response.data["transactions-per-age"].map(
-          (transaction) => transaction.category
-        )
-      );
-      setValuesPerAge(
-        response.data["transactions-per-age"].map((values) => values.value)
-      );
-    });
-  }, []);
+  const valuesPerAge = dataInfo[10]?.["transactions-per-age"].map(
+    (values: any) => values.value
+  );
 
   const series: ApexAxisChartSeries | ApexNonAxisChartSeries = [
     {
@@ -82,9 +62,9 @@ const TranscationsPerAgeChart = () => {
     dataLabels: {
       enabled: false,
     },
-    labels: transationsCategories,
+    labels: transactionsCategories,
     xaxis: {
-      categories: transationsCategories,
+      categories: transactionsCategories,
       labels: {
         style: {
           colors: [theme.colors.brown["400"]],

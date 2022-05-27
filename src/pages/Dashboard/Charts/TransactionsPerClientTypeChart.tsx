@@ -49,7 +49,7 @@ const TranscationsPerClientTypeChart = () => {
 
   return (
     <Box
-    w={["320px", "400px", "608px"]}
+    w={["325px", "400px", "608px"]}
     bg={theme.colors.white}
     borderRadius="12px"
     h={["230px", "270px", "400px"]}
@@ -77,7 +77,7 @@ const TranscationsPerClientTypeChart = () => {
           anchor: "right",
           direction: "column",
           justify: false,
-          translateX: 85,
+          translateX: 90,
           translateY: -45,
           itemsSpacing: 8,
           itemWidth: 100,

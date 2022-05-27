@@ -46,6 +46,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     }
     return {} as IUser;
   });
+
   const [token, setToken] = useState<string>(() => {
     const accessToken = Cookies.get("@loomiProject:accessToken");
 
@@ -56,10 +57,22 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     return "";
   });
 
+  const userInfoCall = () => {
+    api
+      .get("/me")
+      .then((response) =>
+        localStorage.setItem(
+          "@loomiProject:user",
+          JSON.stringify(response.data)
+        )
+      );
+  };
+
 
   const signIn = useCallback(async ({ email, password }: signInCredential) => {
     await api.post("/login", { email, password }).then((response) => {
       Cookies.set("@loomiProject:accessToken", response.data, {expires: 1});
+      userInfoCall()
       setToken(response.data);
     });
   }, []);

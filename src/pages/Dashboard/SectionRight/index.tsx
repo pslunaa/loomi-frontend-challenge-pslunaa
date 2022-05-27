@@ -81,7 +81,7 @@ const SectionRight = () => {
         Perfil do usuário
       </Heading>
       <Grid overflowX="scroll" overflowY="hidden" w={["875px", "1170px", "1820px"]} mt={["15px", "25px", "40px"]}>
-        <Flex w={["1300px" ,"1600px", "1550px"]} gap={["15px", "20px", "32px"]}>
+        <Flex w={["1050px" ,"1600px", "1550px"]} gap={["15px", "20px", "32px"]}>
           <TranscationsPerAgeChart />
           <SessionsPerGenderChart />
           <TranscationsPerClientTypeChart />

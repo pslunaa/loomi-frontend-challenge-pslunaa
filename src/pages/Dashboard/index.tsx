@@ -28,7 +28,7 @@ export const Dashboard = () => {
     <Flex h="100vh" flexDirection="column">
       <Header />
       <Flex
-        w="100vw"
+        w="100%"
         paddingBottom="40px"
         backgroundSize="cover"
         backgroundRepeat="no-repeat"

@@ -1,8 +1,7 @@
-import { Box } from "@chakra-ui/react";
-import { ApexOptions } from "apexcharts";
+import { Box, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import ReactApexCharts from "react-apexcharts";
 import api from "../../../services";
+import { ResponsivePie } from "@nivo/pie";
 import { theme } from "../../../styles/theme";
 
 interface IData {
@@ -23,55 +22,61 @@ const SessionsPerGenderChart = () => {
     });
   }, []);
 
-
-  const series: ApexAxisChartSeries | ApexNonAxisChartSeries = [
+  const data = [
     {
-      data: [valuesPerSex?.male, valuesPerSex?.female],
+      id: "Masculino",
+      label: "Masculino",
+      value: valuesPerSex.male,
+    },
+    {
+      id: "Feminino",
+      label: "Feminino",
+      value: valuesPerSex.female,
     },
   ];
-
-  const options: ApexOptions = {
-    chart: {
-      type: "donut",
-      background: "transparent",
-      toolbar: {
-        show: false,
-      },
-    },
-    colors: [theme.colors.brown["100"], theme.colors.blue["700"]],
-    title: {
-      text: "Sessões por gênero",
-      margin: 30,
-      offsetX: 20,
-      style: {
-        fontFamily: theme.fonts.body,
-        fontWeight: "bold",
-        color: theme.colors.gray["700"],
-      },
-    },
-    legend:{
-        show: true,
-        position: "right",
-        offsetX: 25,
-        offsetY: 60
-    },
-    dataLabels:{
-        enabled: false
-    },
-    labels: ["Masculino", "Feminino"]
-  };
 
   return (
     <Box
       w={["320px", "400px", "608px"]}
       bg={theme.colors.white}
       borderRadius="12px"
+      h={["230px", "270px", "400px"]}
     >
-      <ReactApexCharts
-        width="100%"
-        type="donut"
-        options={options}
-        series={series}
+      <Heading
+        fontFamily={theme.fonts.body}
+        fontWeight="bold"
+        color={theme.colors.gray["700"]}
+        fontSize={["14px", "16px", "19px"]}
+        mt="16px"
+        ml="35px"
+      >
+        Sessões por gênero
+      </Heading>
+      <ResponsivePie
+        data={data}
+        margin={{ top: 40, right: 100, bottom: 80, left: 80 }}
+        innerRadius={0.5}
+        enableArcLabels={false}
+        colors={[theme.colors.brown["100"] ,theme.colors.blue["700"]]}
+        arcLinkLabelsTextColor={theme.colors.white}
+        arcLinkLabelsColor={theme.colors.white}
+        legends={[
+          {
+            anchor: "right",
+            direction: "column",
+            justify: false,
+            translateX: 85,
+            translateY: -45,
+            itemsSpacing: 8,
+            itemWidth: 100,
+            itemHeight: 18,
+            itemTextColor: theme.colors.gray["700"],
+            itemDirection: "left-to-right",
+            itemOpacity: 1,
+            symbolSize: 18,
+            symbolShape: "circle",
+          },
+        ]}
       />
     </Box>
   );

@@ -18,7 +18,7 @@ import ProductList from "./ProductList";
 const SectionRight = () => {
   return (
     <Grid>
-      <Grid w="100vw" mt={["25px", "35px", "45px"]}>
+      <Grid w="100%" mt={["25px", "35px", "45px"]}>
         <Heading
           ml="20px"
           color={theme.colors.gray["500"]}
@@ -27,7 +27,7 @@ const SectionRight = () => {
         >
           Início
         </Heading>
-        <Flex w={["850px", "1100px", "1552px"]} gap={["15px", "20px", "32px"]}>
+        <Flex w={["875px", "1100px", "1552px"]} gap={["15px", "20px", "32px"]}>
           <AverageTicketDay />
           <AverageTicketMonth />
           <AlertMaintenance />
@@ -48,9 +48,10 @@ const SectionRight = () => {
       <Grid
         overflowX="scroll"
         paddingRight="20px"
+        w={["875px", "1150px", "1170px"]}
         mt={["15px", "25px", "40px"]}
       >
-        <Flex w={["1200px", "1390px", "2100px"]} gap={["15px", "20px", "32px"]}>
+        <Flex w={["1200", "1300px", "1900px"]} gap={["15px", "20px", "32px"]}>
           <OrdersMonthChart />
           <ProfitExpectationChart />
           <OrdersAnalyzeChart />
@@ -65,8 +66,8 @@ const SectionRight = () => {
       >
         Funil de Conversão
       </Heading>
-      <Grid overflowX="scroll" mt={["15px", "25px", "40px"]}>
-        <Flex w={["1300px" ,"1600px", "1550px"]} gap={["15px", "20px", "32px"]}>
+      <Grid overflowX="scroll" overflowY="hidden" w={["875px", "1170px", "1820px"]} mt={["15px", "25px", "40px"]}>
+        <Flex w={["1300px" ,"1500px", "1550px"]} gap={["15px", "20px", "32px"]}>
           <ConvertionFunnel />
         </Flex>
       </Grid>
@@ -79,8 +80,8 @@ const SectionRight = () => {
       >
         Perfil do usuário
       </Heading>
-      <Grid mt={["15px", "25px", "40px"]}>
-        <Flex gap={["15px", "20px", "32px"]}>
+      <Grid overflowX="scroll" overflowY="hidden" w={["875px", "1170px", "1820px"]} mt={["15px", "25px", "40px"]}>
+        <Flex w={["1300px" ,"1600px", "1550px"]} gap={["15px", "20px", "32px"]}>
           <TranscationsPerAgeChart />
           <SessionsPerGenderChart />
           <TranscationsPerClientTypeChart />

@@ -14,6 +14,7 @@ interface TransactionsPerAge {
   [key: string]: IData[];
 }
 
+
 const TranscationsPerAgeChart = () => {
   const [transationsCategories, setTransactionsCategories] = useState<string[]>(
     []
@@ -67,6 +68,7 @@ const TranscationsPerAgeChart = () => {
       offsetX: 20,
       style: {
         fontFamily: theme.fonts.body,
+        fontSize: "14px",
         fontWeight: "bold",
         color: theme.colors.gray["700"],
       },
@@ -99,6 +101,7 @@ const TranscationsPerAgeChart = () => {
       w={["320px", "400px", "608px"]}
       bg={theme.colors.white}
       borderRadius="12px"
+      h={["230px", "270px", "400px"]}
     >
       <ReactApexCharts
         width="100%"

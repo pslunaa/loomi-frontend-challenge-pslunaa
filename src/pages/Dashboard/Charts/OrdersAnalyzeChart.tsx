@@ -98,7 +98,7 @@ const OrdersAnalyzeChart = () => {
     dataLabels: {
       enabled: false,
     },
-    colors: [theme.colors.green["100"], theme.colors.purple["100"]],
+    colors: [theme.colors.green["600"], theme.colors.purple["300"]],
     legend: {
       show: true,
       position: "top",

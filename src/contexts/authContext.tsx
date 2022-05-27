@@ -57,10 +57,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   });
 
 
-
   const signIn = useCallback(async ({ email, password }: signInCredential) => {
     await api.post("/login", { email, password }).then((response) => {
-      Cookies.set("@loomiProject:accessToken", response.data);
+      Cookies.set("@loomiProject:accessToken", response.data, {expires: 1});
       setToken(response.data);
     });
   }, []);

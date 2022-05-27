@@ -70,9 +70,10 @@ const CardInfo = ({
           {description}
         </Text>
         <Text
-          fontSize={["xs", "sm", "xl"]}
+          fontSize={["xs", "sm", "lg"]}
           fontWeight="bold"
           color={theme.colors.gray["500"]}
+          paddingBottom={["5px","8px","10px"]}
           mt={alert && !!description === false ? "18px" : "0px"}
         >
           {value}

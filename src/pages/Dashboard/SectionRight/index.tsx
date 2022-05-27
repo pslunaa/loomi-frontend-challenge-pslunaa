@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Heading } from "@chakra-ui/react";
+import { Flex, Grid, Heading } from "@chakra-ui/react";
 import { theme } from "../../../styles/theme";
 import AlertMaintenance from "./Initial/AlertMaintenance";
 import AlertStock from "./Initial/AlertStock";
@@ -7,16 +7,17 @@ import AverageTicketMonth from "./Initial/AvgTicketM";
 import OrdersMonthChart from "../Charts/OrdersMonthChart";
 import OrdersMonth from "./Initial/OrdersMonth";
 import SellsMonth from "./Initial/SellsMonth";
-import ConvertionFunnel from "./convertionFunnel";
+import ConvertionFunnel from "./ConvertionFunnel";
 import TranscationsPerAgeChart from "../Charts/TransactionsPerAge";
-import SessionsPerSexChart from "../Charts/SessionsPerGender";
+import SessionsPerGenderChart from "../Charts/SessionsPerGender";
 import TranscationsPerClientTypeChart from "../Charts/TransactionsPerClientTypeChart";
 import ProfitExpectationChart from "../Charts/ProfitExpectationChart";
 import OrdersAnalyzeChart from "../Charts/OrdersAnalyzeChart";
+import ProductList from "./ProductList";
 
 const SectionRight = () => {
   return (
-    <Box>
+    <Grid>
       <Grid w="100vw" mt={["25px", "35px", "45px"]}>
         <Heading
           ml="20px"
@@ -26,7 +27,7 @@ const SectionRight = () => {
         >
           Início
         </Heading>
-        <Flex w={["auto", "auto", "auto"]} gap={["15px", "20px", "32px"]}>
+        <Flex w={["850px", "1100px", "1552px"]} gap={["15px", "20px", "32px"]}>
           <AverageTicketDay />
           <AverageTicketMonth />
           <AlertMaintenance />
@@ -35,50 +36,60 @@ const SectionRight = () => {
           <SellsMonth />
         </Flex>
       </Grid>
-      <Grid mt={["15px", "25px","40px"]}>
-        <Heading
-          ml="20px"
-          color={theme.colors.violet["700"]}
-          mb="15px"
-          fontSize={["18px", "22px", "28px"]}
-        >
-          Dashboard de vendas
-        </Heading>
-        <Flex gap={["15px", "20px", "32px"]}>
+      <Heading
+        ml="20px"
+        color={theme.colors.violet["700"]}
+        mt="20px"
+        mb="12px"
+        fontSize={["18px", "22px", "28px"]}
+      >
+        Dashboard de vendas
+      </Heading>
+      <Grid
+        overflowX="scroll"
+        paddingRight="20px"
+        mt={["15px", "25px", "40px"]}
+      >
+        <Flex w={["1200px", "1390px", "2100px"]} gap={["15px", "20px", "32px"]}>
           <OrdersMonthChart />
           <ProfitExpectationChart />
           <OrdersAnalyzeChart />
         </Flex>
       </Grid>
-      <Grid mt={["15px", "25px","40px"]}>
-        <Heading
-          ml="20px"
-          color={theme.colors.violet["700"]}
-          mb="15px"
-          fontSize={["18px", "22px", "28px"]}
-        >
-          Funil de Conversão
-        </Heading>
-        <Flex w={["auto", "auto", "auto"]} gap={["15px", "20px", "32px"]}>
+      <Heading
+        ml="20px"
+        mt="20px"
+        color={theme.colors.violet["700"]}
+        mb="15px"
+        fontSize={["18px", "22px", "28px"]}
+      >
+        Funil de Conversão
+      </Heading>
+      <Grid overflowX="scroll" mt={["15px", "25px", "40px"]}>
+        <Flex w={["1300px" ,"1600px", "1550px"]} gap={["15px", "20px", "32px"]}>
           <ConvertionFunnel />
         </Flex>
       </Grid>
-      <Grid mt={["15px", "25px","40px"]}>
-        <Heading
-          ml="20px"
-          color={theme.colors.violet["700"]}
-          mb="15px"
-          fontSize={["18px", "22px", "28px"]}
-        >
-          Perfil do usuário
-        </Heading>
+      <Heading
+        ml="20px"
+        mt="20px"
+        color={theme.colors.violet["700"]}
+        mb="15px"
+        fontSize={["18px", "22px", "28px"]}
+      >
+        Perfil do usuário
+      </Heading>
+      <Grid mt={["15px", "25px", "40px"]}>
         <Flex gap={["15px", "20px", "32px"]}>
           <TranscationsPerAgeChart />
-          <SessionsPerSexChart />
+          <SessionsPerGenderChart />
           <TranscationsPerClientTypeChart />
         </Flex>
       </Grid>
-    </Box>
+      <Grid>
+        <ProductList />
+      </Grid>
+    </Grid>
   );
 };
 

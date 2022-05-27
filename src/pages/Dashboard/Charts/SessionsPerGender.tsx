@@ -10,7 +10,7 @@ interface IData {
   female: number;
 }
 
-interface ISessionsPerGender {
+interface ISessionsPerSex {
   [key: string]: IData;
 }
 
@@ -18,7 +18,7 @@ const SessionsPerGenderChart = () => {
   const [valuesPerSex, setValuesPerSex] = useState<IData>({} as IData);
 
   useEffect(() => {
-    api.get<ISessionsPerGender>("/users-resume").then((response) => {
+    api.get<ISessionsPerSex>("/users-resume").then((response) => {
       setValuesPerSex(response.data["sessions-per-sex"]);
     });
   }, []);

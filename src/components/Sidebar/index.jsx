@@ -15,7 +15,7 @@ export const Sidebar = () => {
   return (
     <Flex
       bg={theme.colors.white}
-      borderTopRadius="8px"
+      borderRadius="8px"
       alignItems="center"
       flexDirection="column"
       paddingBottom={["100px", "200", "290px"]}
@@ -23,7 +23,7 @@ export const Sidebar = () => {
       ml="16px"
       mr="30px"
       w="45px"
-      h="auto"
+      h={["700px", "800px", "964px"]}
     >
       <Center
         borderBottom="1px solid"
